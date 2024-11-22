@@ -15,8 +15,6 @@ public class xo extends javax.swing.JFrame {
  String turno="X" ;
  String jugador1="",jugador2="", ganador ;
     JLabel labels[][]=new JLabel[3][3];
-    int []filas={0,0,0,1,1,1,2,2,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2};
-    int []columnas={0,1,2,0,1,2,0,1,2,0,0,0,1,1,1,2,2,2,2,1,0,0,1,2};
     public xo() {
         initComponents();
         labels[0][0]=jLabel1 ;
@@ -390,27 +388,39 @@ public class xo extends javax.swing.JFrame {
             }
     }
    public void enlinea(){
-        for (int i = 0; i <6;i=(i+3)) {
-             if(labels[filas[i]][columnas[i]].getText().equals("X")&&
-                   labels[filas[i]+1][columnas[i]+1].getText().equals("X") &&
-                   labels[filas[i]+2][columnas[i]+2].getText().equals("X")){
-               
-              
+        for (int i = 0; i <3;i++) {
+             if(labels[i][0].getText().equals("X")&&labels[i][1].getText().equals("X")&&labels[i][2].getText().equals("X")){
+                   this.jLabel13.setText("El Ganador es :"+jTextField1.getText());
+             }
+             if(labels[0][i].getText().equals("X")&&labels[1][i].getText().equals("X")&&labels[2][i].getText().equals("X")){
+                 this.jLabel13.setText("El Ganador es :"+jTextField1.getText());
+             }
+             if(labels[0][0].getText().equals("X")&&labels[1][1].getText().equals("X")&&labels[2][2].getText().equals("X")){
+                   this.jLabel13.setText("El Ganador es :"+jTextField1.getText());
+             }
+               if(labels[2][0].getText().equals("X")&&labels[1][1].getText().equals("X")&&labels[0][2].getText().equals("X")){
                   this.jLabel13.setText("El Ganador es :"+jTextField1.getText());
-           }
-             if(labels[filas[i]][columnas[i]].getText().equals("O")&&
-                   labels[filas[i]+1][columnas[i]+1].getText().equals("O") &&
-                   labels[filas[i]+2][columnas[i]+2].getText().equals("O")){
-             
-            
-                this.jLabel13.setText("El Ganador es :"+jTextField2.getText());
+              }
+              if(labels[i][0].getText().equals("O")&&labels[i][1].getText().equals("O")&&labels[i][2].getText().equals("O")){
+                   this.jLabel13.setText("El Ganador es :"+jTextField2.getText());
+             }
+             if(labels[0][i].getText().equals("O")&&labels[1][i].getText().equals("O")&&labels[2][i].getText().equals("O")){
+                 this.jLabel13.setText("El Ganador es :"+jTextField2.getText());
+             }
+             if(labels[0][0].getText().equals("O")&&labels[1][1].getText().equals("O")&&labels[2][2].getText().equals("O")){
+                   this.jLabel13.setText("El Ganador es :"+jTextField2.getText());
+             }
+               if(labels[2][0].getText().equals("O")&&labels[1][1].getText().equals("O")&&labels[0][2].getText().equals("O")){
+                  this.jLabel13.setText("El Ganador es :"+jTextField2.getText());
+              }
         }
-        }
-        
+       
    }
    public void iniciarjuego(String j1, String j2){
+       turno="X";
        this.jugador1=j1;
        this.jugador2=j2;
+       this.jLabel13.setText("");
        for (int i = 0; i < 3; i++) {
            for (int j = 0; j < 3; j++) {
                labels[i][j].setText("");
